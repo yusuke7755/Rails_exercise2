@@ -1,0 +1,21 @@
+<h3>以下の内容で、送信します。</h3>
+<%= form_with(model: @contact, url: confirm_new, method: confirm_form_method, local: true) do |form| %>
+  <% if @contact.errors.any? %>
+    <div id="error_explanation">
+        <h2><%= @contact.errors.count %>件のエラーがあります。</h2>
+      <ul>
+      <% @contact.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= form.hidden_field :name %>
+  <%= form.hidden_field :email %>
+  <%= form.hidden_field :content %>
+  <p>名前:<%= @contact.name %></p>
+  <p>タイトル:<%= @contact.email %></p>
+  <p>問い合わせ内容:<%= @contact.content %></p>
+  <%= form.submit  "登録する" %>
+  <%= form.submit '戻る', name: 'back' %>
+<% end %>

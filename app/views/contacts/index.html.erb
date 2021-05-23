@@ -1,0 +1,24 @@
+<!– blog機能を作成すること ->
+<!– blogの投稿・投稿確認・編集・一覧表示・削除機能があること ->
+<h1>ブログ一覧</h1>
+<p><%= notice %></p>
+<table>
+  <tr>
+    <th>お名前</th>
+    <th>メール</th>
+    <th>内容</th>
+    <th>編集</th>
+    <th>削除</th>
+  </tr>
+<% @contacts.each do |contact| %>
+  <tr>
+    <td><%= contact.name %></td>
+    <td><%= contact.email %></td>
+    <td><%= contact.content %></td>
+    <td><%= link_to "ブログを編集する", edit_contact_path(contact.id)  %></td>
+    <td><%= link_to 'ブログを削除する', contact_path(contact.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %></td>
+  </tr>
+<% end %>
+</table>
+<br>
+<%= link_to '新しくブログを投稿する', new_contact_path %>
